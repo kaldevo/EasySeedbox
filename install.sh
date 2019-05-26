@@ -31,12 +31,14 @@ cat << "EOF"
 EOF
 
 echo "${normal}========================================================================="
-echo "${cyan}Easy Seedbox installer - Transmission${normal}"
+echo "${cyan}Easy Seedbox installer - Transmission[kaldevomod]${normal}"
 echo "========================================================================="
 echo "${bold}Description:${normal}"
 echo " Installs Transmission and WebUI to create a simple seedbox on any"
 echo " Ubuntu or Debian VPS."
+echo " Added option to set folder location."
 echo "\n${dim}Script written by ${bold}swain.${normal}"
+echo "\n${dim}Modded by ${bold}kadlevo.${normal}"
 echo "========================================================================="
 
 
@@ -86,7 +88,7 @@ echo " Password = $pass"
 echo "==========================="
 transdir="transdir"
 echo "Please input your desired Transmission download folder location:"
-echo "Dont add trailing slash / in the end of your directory location."
+echo "Dont add trailing slash / in the end of folder path."
 read -p "(Default Transmission Download Folder:/home/downloads):" transdir
 if [ $transdir"" = "" ]; then
     transdir="/home/downloads"
