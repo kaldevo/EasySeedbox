@@ -38,7 +38,7 @@ echo " Installs Transmission and WebUI to create a simple seedbox on any"
 echo " Ubuntu or Debian VPS."
 echo " Added option to set folder location. 2019-05-26"
 echo "${dim}Script written by ${bold}swain.${normal}"
-echo "${dim}Modded by ${bold}kadlevo.${normal}"
+echo "\n${dim}Modded by ${bold}kadlevo.${normal}"
 echo "========================================================================="
 
 
