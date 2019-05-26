@@ -5,6 +5,8 @@ EasySeedbox is an unobtrusive seedbox installation script for Ubuntu and Debian 
 
 
 
+## Kaldevo Mod 2019-05-26
+- Added option to set custom folder location.
 
 #### Supported Operating Systems
 - Ubuntu 12.04+
