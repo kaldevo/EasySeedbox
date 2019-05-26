@@ -84,6 +84,16 @@ fi
 echo "==========================="
 echo " Password = $pass"
 echo "==========================="
+transdir="transdir"
+echo "Please input your desired Transmission download folder location:"
+echo "Dont add trailing slash / in the end of your directory location."
+read -p "(Default Transmission Download Folder:/home/downloads):" transdir
+if [ $transdir"" = "" ]; then
+    transdir="/home/downloads"
+fi
+echo "==========================="
+echo " Download Folder = $transdir"
+echo "==========================="
 
 
 echo "============================Starting Install=================================="
@@ -91,38 +101,38 @@ apt-get -y  update
 apt-get -y install transmission-daemon curl
 
 echo "============================making directories================================"
-if [ ! -d "/home/downloads" ]; then
-    mkdir /home/downloads
-    echo "/home/downloads  [created]"
+if [ ! -d $transdir ]; then
+    mkdir $transdir
+    echo $transdir" [created]"
 else
-    echo "/home/downloads [found]"
+    echo $transdir" [found]"
 fi
 # 2nd if
-if [ ! -d "/home/downloads/watch" ]; then
-    mkdir /home/downloads/watch
-    echo "/home/downloads/watch [created]"
+if [ ! -d $transdir"/watch" ]; then
+    mkdir $transdir/watch
+    echo $transdir"/watch [created]"
 else
-    echo "/home/downloads/watch [found]"
+    echo $transdir"/watch [found]"
     
     #3rd if
 fi
-if [ ! -d "/home/downloads/incomplete" ]; then
-    mkdir /home/downloads/incomplete
-    echo "/home/downloads/incomplete [created]"
+if [ ! -d $transdir"/incomplete" ]; then
+    mkdir $transdir/incomplete
+    echo $transdir"/incomplete [created]"
     
 else
-    echo "/home/downloads/incomplete [found]"
+    echo $transdir"/incomplete [found]"
 fi
-if [ ! -d "/home/downloads/downloaded" ]; then
-    mkdir /home/downloads/downloaded
-    echo "/home/downloads/downloaded [created]"
+if [ ! -d $transdir"/downloaded" ]; then
+    mkdir $transdir/downloaded
+    echo $transdir"/downloaded [created]"
 else
-    echo "/home/downloads/downloaded [found]"
+    echo $transdir"/downloaded [found]"
 fi
 echo "============================Permissions======================================="
 usermod -a -G debian-transmission root
-chgrp -R debian-transmission /home/downloads
-chmod -R 770 /home/downloads
+chgrp -R debian-transmission $transdir
+chmod -R 770 $transdir
 cd $cur_dir
 echo "============================Updating Config==================================="
 
@@ -152,13 +162,13 @@ cat > $SETTINGSFILE <<- EOM
 
 "dht-enabled": true,
 
-"download-dir": "/home/downloads/downloaded/",
+"download-dir": $transdir"/downloaded/",
 
-"incomplete-dir": "/home/downloads/incomplete/",
+"incomplete-dir": $transdir"/incomplete/",
 
 "incomplete-dir-enabled": true,
 
-"watch-dir": "/home/downloads/watch/",
+"watch-dir": $transdir"/watch/",
 
 "watch-dir-enabled": true,
 
@@ -212,7 +222,7 @@ cat > $SETTINGSFILE <<- EOM
 
 "proxy-type": 0,
 
-"ratio-limit": 0.2500,
+"ratio-limit": 0,
 
 "ratio-limit-enabled": true,
 
@@ -273,7 +283,7 @@ echo "==========================================================================
 echo " WebUI URL: http://$IP:9091"
 echo " WebUI Username: $username"
 echo " WebUI Password: $pass"
-echo " Download Location: /home/downloads"
+echo " Download Location: $transdir"
 echo ""
 echo "=============================================================================="
 echo "                            Script by swain.pw                                "
