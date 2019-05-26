@@ -164,13 +164,13 @@ cat > $SETTINGSFILE <<- EOM
 
 "dht-enabled": true,
 
-"download-dir": $transdir"/downloaded/",
+"download-dir": "$transdir/downloaded/",
 
-"incomplete-dir": $transdir"/incomplete/",
+"incomplete-dir": "$transdir/incomplete/",
 
 "incomplete-dir-enabled": true,
 
-"watch-dir": $transdir"/watch/",
+"watch-dir": "$transdir/watch/",
 
 "watch-dir-enabled": true,
 
